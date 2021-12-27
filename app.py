@@ -8,13 +8,22 @@ firebase_admin.initialize_app(cred)
 db = firestore.client()
 book_ref = db.collection('books')
 
-
 app = Flask(__name__)
 
 
 @app.route('/')
-def hello():
+def home():
     return render_template("home.html")
+
+@app.route('/new_swap')
+def new_swap():
+    stream = book_ref.stream()
+    book_objs = [Book.from_dict( doc.to_dict() ) for doc in stream]
+    return render_template("new_swap.html", books=book_objs)
+
+@app.route('/hello')
+def hello():
+    return render_template("hello.html")
 
 @app.route('/book/add', methods=['POST'])
 def createBook():
@@ -37,3 +46,5 @@ def readBook(book_id):
     except Exception as e:
         return f"An Error Occured: {e}"
 
+if __name__ == '__main__':
+    app.run(debug=True)
