@@ -14,7 +14,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello():
-    return "Hello you!"
+    return render_template("home.html")
 
 @app.route('/book/add', methods=['POST'])
 def createBook():
