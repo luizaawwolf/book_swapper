@@ -1,19 +1,28 @@
-from flask import Flask, jsonify, render_template, request, redirect, url_for
+from flask import Flask, jsonify, render_template, request, redirect, url_for, send_from_directory
 import firebase_admin
 from firebase_admin import credentials, firestore, initialize_app
 from models.book import Book
+from flask_cors import CORS #comment this on deployment
 
 cred = credentials.Certificate("serviceAccountKey.json")
 firebase_admin.initialize_app(cred)
 db = firestore.client()
 book_ref = db.collection('books')
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='', static_folder='frontend/build')
+CORS(app) #comment this on deployment
 
+# @app.route('/')
+# def home():
+#     return render_template("home.html")
 
-@app.route('/')
-def home():
-    return render_template("home.html")
+@app.route("/", defaults={'path':''})
+def serve(path):
+    return send_from_directory(app.static_folder,'index.html')
+
+@app.route("/home", defaults={'path':''})
+def home(path):
+    return send_from_directory(app.static_folder,'home.html')
 
 @app.route('/new_swap')
 def new_swap():
@@ -21,9 +30,12 @@ def new_swap():
     book_objs = [Book.from_dict( doc.to_dict() ) for doc in stream]
     return render_template("new_swap.html", books=book_objs)
 
-@app.route('/hello')
-def hello():
-    return render_template("hello.html")
+@app.route('/getmessage')
+def get_message():
+    return {
+      'resultStatus': 'SUCCESS',
+      'message': "trying with fetch"
+      }
 
 @app.route('/book/add', methods=['POST'])
 def createBook():
