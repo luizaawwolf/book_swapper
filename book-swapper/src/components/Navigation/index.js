@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import {
  Navbar,
  Nav,
- Container
+ Container,
+ Form,
+ FormControl
 } from "react-bootstrap";
   
 const Navigation = () => {
@@ -10,17 +12,25 @@ const Navigation = () => {
  
  return (
     <>
-    <Navbar bg="light" variant="light">
+    <Navbar>
       <Container>
       <Navbar.Brand href="/">Navbar</Navbar.Brand>
-      <Nav className="me-auto justify-content-between w-100">
+      <Nav className="justify-content-between w-100 mx-5">
         <Nav.Link href="/home">Home</Nav.Link>
         <Nav.Link href="/findbooks">Find Books</Nav.Link>
         <Nav.Link href="/swaps">Swaps</Nav.Link>
         <Nav.Link href="/yourlibrary">Your Library</Nav.Link>
       </Nav>
+      <Form className="d-flex">
+        <FormControl
+          type="search"
+          placeholder="Search"
+          className="me-2"
+          aria-label="Search"
+        />
+      </Form>
       </Container>
-    </Navbar>
+    </Navbar> 
   </>
  );
 };
