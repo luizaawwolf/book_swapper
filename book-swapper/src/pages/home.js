@@ -1,16 +1,14 @@
 import React from 'react';
+import SwapBooksButton from '../components/SwapBooksButton';
   
 const Home = () => {
   return (
     <div
       style={{
-        display: 'flex',
-        justifyContent: 'Right',
-        alignItems: 'Right',
         height: '100vh'
       }}
     >
-      <h1>Home</h1>
+      <SwapBooksButton></SwapBooksButton>
     </div>
   );
 };

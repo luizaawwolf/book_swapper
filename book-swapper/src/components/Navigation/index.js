@@ -6,6 +6,7 @@ import {
  Form,
  FormControl
 } from "react-bootstrap";
+import './index.css';
   
 const Navigation = () => {
  const [modalShow, setModalShow] = useState(false);
