@@ -8,6 +8,7 @@ import FindBooks from './pages/findbooks';
 import YourLibrary from './pages/yourlibrary';
 import { Route, Routes } from 'react-router-dom';
 import Swaps from './pages/swaps';
+import Footer from './components/Footer';
 
 function App() {
     return (    
@@ -21,6 +22,7 @@ function App() {
                 <Route path='/' element={<Home />}/>        
                 <Route path='*' element={<Home />}/>              
             </Routes>
+            {/* <Footer></Footer> */}
         </div>  
     );
   }
