@@ -9,8 +9,10 @@ import YourLibrary from './pages/yourlibrary';
 import { Route, Routes } from 'react-router-dom';
 import Swaps from './pages/swaps';
 import Footer from './components/Footer';
+import { getApps } from 'firebase/app';
 
 function App() {
+    const firebaseApp = getApps()[0]; 
     return (    
         <div className="App">
             <Navigation></Navigation>  
@@ -22,6 +24,9 @@ function App() {
                 <Route path='/' element={<Home />}/>        
                 <Route path='*' element={<Home />}/>              
             </Routes>
+            <code>
+        <pre>{JSON.stringify(firebaseApp.options, null, 2)}</pre>
+      </code>
             {/* <Footer></Footer> */}
         </div>  
     );
