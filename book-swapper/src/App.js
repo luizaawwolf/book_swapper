@@ -10,22 +10,24 @@ import { Route, Routes } from 'react-router-dom';
 import Swaps from './pages/swaps';
 import Footer from './components/Footer';
 import { getApps } from 'firebase/app';
+import { AuthProvider } from "./contexts/AuthContext"
 
 function App() {
     const firebaseApp = getApps()[0]; 
     return (    
         <div className="App">
             <Navigation></Navigation>  
-            <Routes>                
-                <Route path='/signup' element={<SignUp />}/>               
-                <Route path='/swaps' element={<Swaps />}/> 
-                <Route path='/findbooks' element={<FindBooks />}/>  
-                <Route path='/yourlibrary' element={<YourLibrary />}/>
-                <Route path='/' element={<Home />}/>        
-                <Route path='*' element={<Home />}/>              
-            </Routes>
+            <AuthProvider>
+                <Routes>                
+                    <Route path='/signup' element={<SignUp />}/>               
+                    <Route path='/swaps' element={<Swaps />}/> 
+                    <Route path='/findbooks' element={<FindBooks />}/>  
+                    <Route path='/yourlibrary' element={<YourLibrary />}/>
+                    <Route path='/' element={<Home />}/>        
+                    <Route path='*' element={<Home />}/>              
+                </Routes>
+            </AuthProvider>
             <code>
-        <pre>{JSON.stringify(firebaseApp.options, null, 2)}</pre>
       </code>
             {/* <Footer></Footer> */}
         </div>  
