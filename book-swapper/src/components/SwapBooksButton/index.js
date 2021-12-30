@@ -10,7 +10,7 @@ const SwapBooksButton = () => {
  return (
     <>
     <Container id="container-button" className="centered" fluid>
-        <Button id="swap_button">SWAP YOUR BOOKS</Button>{' '}
+        <Button id="swap_button" href="/signup">SWAP YOUR BOOKS</Button>{' '}
     </Container>
 
   </>

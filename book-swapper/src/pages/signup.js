@@ -1,4 +1,5 @@
 import React from 'react';
+import SignupForm from '../components/SignUp';
   
 const SignUp = () => {
   return (
@@ -11,6 +12,7 @@ const SignUp = () => {
       }}
     >
       <h1>Sign Up</h1>
+      <SignupForm></SignupForm>
     </div>
   );
 };
