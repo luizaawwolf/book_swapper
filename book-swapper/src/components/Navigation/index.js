@@ -1,21 +1,24 @@
-import React, { useState } from "react";
+import React, { useState } from "react"
 import {
  Navbar,
  Nav,
  Container,
  Form,
  FormControl
-} from "react-bootstrap";
-import './index.css';
+} from "react-bootstrap"
+import './index.css'
+import { useAuth } from "../../contexts/AuthContext";
+
   
 const Navigation = () => {
  const [modalShow, setModalShow] = useState(false);
- 
+
+
  return (
     <>
     <Navbar>
       <Container>
-      <Navbar.Brand href="/">Navbar</Navbar.Brand>
+      <Navbar.Brand href="/"></Navbar.Brand>
       <Nav className="justify-content-between w-100 mx-5">
         <Nav.Link href="/home">Home</Nav.Link>
         <Nav.Link href="/findbooks">Find Books</Nav.Link>

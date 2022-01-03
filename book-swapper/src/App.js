@@ -11,6 +11,8 @@ import Swaps from './pages/swaps';
 import Footer from './components/Footer';
 import { getApps } from 'firebase/app';
 import { AuthProvider } from "./contexts/AuthContext"
+import LogIn from './pages/login';
+import SwapForm from './components/SwapForm/SwapForm';
 
 function App() {
     const firebaseApp = getApps()[0]; 
@@ -19,10 +21,12 @@ function App() {
             <Navigation></Navigation>  
             <AuthProvider>
                 <Routes>                
-                    <Route path='/signup' element={<SignUp />}/>               
+                    <Route path='/signup' element={<SignUp />}/>
+                    <Route path='/login' element={<LogIn />}/>                         
                     <Route path='/swaps' element={<Swaps />}/> 
                     <Route path='/findbooks' element={<FindBooks />}/>  
                     <Route path='/yourlibrary' element={<YourLibrary />}/>
+                    <Route path='/swapform' element={<SwapForm />}/>
                     <Route path='/' element={<Home />}/>        
                     <Route path='*' element={<Home />}/>              
                 </Routes>
